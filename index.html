@@ -145,6 +145,15 @@ section{padding:44px 0}
 /* explicit width, so the width/height attributes still reserve the box
    before the image loads; max-height would collapse it to nothing */
 .shot-tall img{width:min(100%,250px);margin:0 auto}
+/* A phone-shaped shot beside its prose rather than above it: stacked, its
+   portrait proportions cost more vertical space than the text they describe. */
+.aside-shot{display:grid;grid-template-columns:1fr 250px;gap:28px;align-items:start}
+.aside-text{display:flex;flex-direction:column;gap:16px;min-width:0}
+.aside-shot .shot-tall img{width:100%;margin:0}
+@media (max-width:680px){
+  .aside-shot{grid-template-columns:1fr;gap:18px}
+  .aside-shot .shot-tall img{width:min(100%,250px);margin:0 auto}
+}
 .shot figcaption{
   font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--faint);
   letter-spacing:.02em;
@@ -247,24 +256,29 @@ footer{
       <p class="find">A mobile-first PWA where creators publish music, writing, video and
         live dates under one handle.</p>
 
-      <p class="attrib">Running at a preview deployment, with the production domain to
-        follow. No auth layer yet, so everything is readable.</p>
+      <div class="aside-shot">
+        <div class="aside-text">
+          <p class="attrib">Running at a preview deployment, with the production domain to
+            follow. No auth layer yet, so everything is readable.</p>
 
-      <figure class="shot shot-tall">
-        <img src="assets/bronzefm-home.webp" width="722" height="1616"
-             loading="lazy" decoding="async"
-             alt="bronze.fm home screen on a phone viewport: a featured creator, then a
-                  New Content list showing a whitepaper and a music release, each with
-                  like, comment and share actions.">
-        <figcaption>Preview deployment, mobile viewport.</figcaption>
-      </figure>
+          <p>Multi-tenant from the schema up: a creator owns projects, and each project carries
+            typed interfaces onto it &mdash; an album&rsquo;s tracklist, a paper&rsquo;s reader.</p>
 
-      <p>Multi-tenant from the schema up: a creator owns projects, and each project carries
-        typed interfaces onto it &mdash; an album&rsquo;s tracklist, a paper&rsquo;s reader.</p>
-      <div class="tags">
-        <span class="tag">typescript</span><span class="tag">react</span>
-        <span class="tag">supabase</span><span class="tag">PWA</span>
-        <span class="tag">playwright</span>
+          <div class="tags">
+            <span class="tag">typescript</span><span class="tag">react</span>
+            <span class="tag">supabase</span><span class="tag">PWA</span>
+            <span class="tag">playwright</span>
+          </div>
+        </div>
+
+        <figure class="shot shot-tall">
+          <img src="assets/bronzefm-home.webp" width="722" height="910"
+               loading="lazy" decoding="async"
+               alt="bronze.fm home screen on a phone viewport: a featured creator, then a
+                    New Content list showing a whitepaper and a music release, each with
+                    like, comment and share actions.">
+          <figcaption>Preview deployment, mobile viewport.</figcaption>
+        </figure>
       </div>
       <div class="links">
         <a href="https://github.com/aravindvrm/bronze.fm">Source on GitHub</a>
