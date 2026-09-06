@@ -139,12 +139,11 @@ section{padding:44px 0}
   font-family:"IBM Plex Mono",monospace;font-size:.64rem;font-weight:600;
   letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;border:1px solid;
 }
-.status.live{color:var(--pass);border-color:var(--pass);background:var(--pass-soft)}
-.status.contract{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
 .attrib{
   font-size:.88rem;color:var(--muted);border-left:1px solid var(--rule-strong);
   padding-left:16px;
 }
+.prod .attrib{font-size:.84rem;padding-left:14px}
 .status.dev{color:var(--muted);border-color:var(--rule-strong);background:var(--sunk)}
 
 /* ---------- elsewhere ---------- */
@@ -186,21 +185,21 @@ footer{
   </header>
 
   <section>
-    <div class="shead">Products</div>
+    <div class="shead">Client work</div>
 
     <article class="proj">
       <div class="prod-head">
         <h2><a href="https://swapaday.com">Swapaday</a></h2>
-        <span class="status contract">client work</span>
+        <span class="status dev">pre&#8209;launch</span>
       </div>
 
       <p class="find">Step into someone else&rsquo;s workday. A marketplace for career
         shadowing &mdash; book time with a host and find out what a job actually feels like
         before committing to it.</p>
 
-      <p class="attrib">Built under contract as a working prototype. Deployed and reachable;
-        pre-launch while the founder works through market validation and operational setup, so
-        the marketplace has no live listings yet.</p>
+      <p class="attrib">Built as a working prototype for the founder, who is working through
+        market validation and operational setup. Deployed and reachable, but not yet open, so
+        the marketplace carries no live listings.</p>
 
       <div class="metrics">
         <div class="metric"><b>45</b><span>Supabase migrations</span></div>
@@ -235,7 +234,9 @@ footer{
       <p>A mobile-first PWA where creators publish music, writing, video and live dates under
         one handle. Multi-tenant from the schema up: a creator owns projects, and each project
         carries typed interfaces onto it &mdash; an album&rsquo;s tracklist, a paper&rsquo;s
-        reader. Prototype, no auth yet.</p>
+        reader.</p>
+      <p class="attrib">Running at a preview deployment, with the production domain to
+        follow. No auth layer yet, so everything is readable.</p>
       <div class="tags">
         <span class="tag">typescript</span><span class="tag">react</span>
         <span class="tag">supabase</span><span class="tag">PWA</span>
