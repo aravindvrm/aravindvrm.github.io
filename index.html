@@ -22,6 +22,7 @@
   --ink:#F2F6FA; --body:#C6D2DE; --muted:#8D9BAB; --faint:#7A8593;
   --rule:#1F2732; --rule-strong:#2E3945;
   --accent:#79C0FF; --accent-soft:#0E1E2C;
+  --pass:#7EE0A8; --pass-soft:#0C2016;
 }
 @media (prefers-color-scheme: light){
   :root:not([data-theme="dark"]){
@@ -29,6 +30,7 @@
     --ink:#101720; --body:#2B3742; --muted:#58656F; --faint:#6A7681;
     --rule:#DFE5EB; --rule-strong:#C4CED8;
     --accent:#1668A8; --accent-soft:#E7F1FA;
+    --pass:#1F6B4A; --pass-soft:#E8F2ED;
   }
 }
 :root[data-theme="light"]{
@@ -36,6 +38,7 @@
   --ink:#101720; --body:#2B3742; --muted:#58656F; --faint:#6A7681;
   --rule:#DFE5EB; --rule-strong:#C4CED8;
   --accent:#1668A8; --accent-soft:#E7F1FA;
+  --pass:#1F6B4A; --pass-soft:#E8F2ED;
 }
 
 *{box-sizing:border-box}
@@ -82,6 +85,9 @@ section{padding:44px 0}
 /* ---------- featured project ---------- */
 .proj{display:flex;flex-direction:column;gap:16px}
 .proj h2{font-size:1.6rem;font-weight:500;line-height:1.22}
+.proj h2 a{text-decoration:none;border-bottom:1px solid var(--rule-strong)}
+.proj h2 a:hover,.proj h2 a:focus-visible{border-bottom-color:var(--accent)}
+.proj h2 a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .proj .find{
   font-family:Spectral,Georgia,serif;font-size:1.14rem;line-height:1.45;
   color:var(--ink);border-left:3px solid var(--accent);padding:2px 0 2px 18px;
@@ -116,6 +122,25 @@ section{padding:44px 0}
   font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--muted);
   border:1px solid var(--rule);background:var(--sunk);padding:2px 7px;
 }
+
+/* ---------- products ---------- */
+.prods{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.prod{
+  border:1px solid var(--rule);background:var(--raised);padding:18px 20px;
+  display:flex;flex-direction:column;gap:11px;
+}
+.prod-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.prod h3{font-size:1.14rem;font-weight:500}
+.prod h3 a{text-decoration:none;border-bottom:1px solid var(--rule-strong)}
+.prod h3 a:hover,.prod h3 a:focus-visible{border-bottom-color:var(--accent)}
+.prod h3 a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.prod p{font-size:.9rem;color:var(--body);line-height:1.55}
+.status{
+  font-family:"IBM Plex Mono",monospace;font-size:.64rem;font-weight:600;
+  letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;border:1px solid;
+}
+.status.live{color:var(--pass);border-color:var(--pass);background:var(--pass-soft)}
+.status.dev{color:var(--muted);border-color:var(--rule-strong);background:var(--sunk)}
 
 /* ---------- elsewhere ---------- */
 .elsewhere{font-size:.95rem;color:var(--body)}
@@ -156,7 +181,65 @@ footer{
   </header>
 
   <section>
-    <div class="shead">Featured</div>
+    <div class="shead">Products</div>
+
+    <article class="proj">
+      <div class="prod-head">
+        <h2><a href="https://swapaday.com">Swapaday</a></h2>
+        <span class="status live">live</span>
+      </div>
+
+      <p class="find">Step into someone else&rsquo;s workday. A marketplace for career
+        shadowing &mdash; book time with a host and find out what a job actually feels like
+        before committing to it.</p>
+
+      <div class="metrics">
+        <div class="metric"><b>45</b><span>Supabase migrations</span></div>
+        <div class="metric"><b>60</b><span>test files</span></div>
+        <div class="metric"><b>WebRTC</b><span>live video sessions</span></div>
+        <div class="metric"><b>cron</b><span>scheduled reminders, 5&#8209;min</span></div>
+      </div>
+
+      <p>A Next.js application in a pnpm monorepo, backed by Supabase with row-level
+        security and 45 versioned migrations. Hosts publish availability; guests browse by
+        type, format, duration and industry, then book. Sessions run over LiveKit for
+        real-time video, and scheduled jobs handle reminder and notification email on a
+        five-minute cadence. Roughly 1,100 TypeScript modules.</p>
+
+      <div class="tags">
+        <span class="tag">next.js</span><span class="tag">typescript</span>
+        <span class="tag">supabase</span><span class="tag">livekit</span>
+        <span class="tag">tanstack query</span><span class="tag">zod</span>
+        <span class="tag">playwright</span><span class="tag">vercel</span>
+      </div>
+
+      <div class="links">
+        <a href="https://swapaday.com">swapaday.com</a>
+      </div>
+    </article>
+
+    <article class="prod" style="margin-top:26px">
+      <div class="prod-head">
+        <h3><a href="https://bronze-fm.vercel.app">bronze.fm</a></h3>
+        <span class="status dev">in development</span>
+      </div>
+      <p>A mobile-first PWA where creators publish music, writing, video and live dates under
+        one handle. Multi-tenant from the schema up: a creator owns projects, and each project
+        carries typed interfaces onto it &mdash; an album&rsquo;s tracklist, a paper&rsquo;s
+        reader. Prototype, no auth yet.</p>
+      <div class="tags">
+        <span class="tag">typescript</span><span class="tag">react</span>
+        <span class="tag">supabase</span><span class="tag">PWA</span>
+        <span class="tag">playwright</span>
+      </div>
+      <div class="links">
+        <a href="https://github.com/aravindvrm/bronze.fm">Source on GitHub</a>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <div class="shead">Research</div>
 
     <article class="proj">
       <h2>Systematic Equity Research Framework</h2>
@@ -204,7 +287,7 @@ footer{
   </section>
 
   <section>
-    <div class="shead">Also</div>
+    <div class="shead">Tooling</div>
 
     <article class="proj">
       <h2>Bender</h2>
