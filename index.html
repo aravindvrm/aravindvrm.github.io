@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0A0D12">
+<meta name="author" content="aravindvrm">
+<meta name="description" content="Machine learning and quantitative research. Selected projects, with the findings stated up front.">
+<title>aravindvrm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Shares the token system and typefaces of the project writeups, so the two
+   read as one body of work rather than two unrelated pages.
+   Contrast, computed per ground: ink 17.92 / body 12.67 / muted 6.87 /
+   faint 5.19 / accent 10.00 on #0A0D12. Light theme uses its own darker blue,
+   since #79C0FF measures 1.89:1 on white. All clear WCAG AA. */
+:root{
+  --paper:#0A0D12; --raised:#161D27; --sunk:#11161E;
+  --ink:#F2F6FA; --body:#C6D2DE; --muted:#8D9BAB; --faint:#7A8593;
+  --rule:#1F2732; --rule-strong:#2E3945;
+  --accent:#79C0FF; --accent-soft:#0E1E2C;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --paper:#FBFCFD; --raised:#FFFFFF; --sunk:#F0F3F6;
+    --ink:#101720; --body:#2B3742; --muted:#58656F; --faint:#6A7681;
+    --rule:#DFE5EB; --rule-strong:#C4CED8;
+    --accent:#1668A8; --accent-soft:#E7F1FA;
+  }
+}
+:root[data-theme="light"]{
+  --paper:#FBFCFD; --raised:#FFFFFF; --sunk:#F0F3F6;
+  --ink:#101720; --body:#2B3742; --muted:#58656F; --faint:#6A7681;
+  --rule:#DFE5EB; --rule-strong:#C4CED8;
+  --accent:#1668A8; --accent-soft:#E7F1FA;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--body);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 26px}
+a{color:var(--accent)}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;color:var(--ink);margin:0;text-wrap:balance}
+p{margin:0}
+
+/* ---------- header ---------- */
+header{padding:88px 0 0}
+.hgrid{display:flex;flex-direction:column;gap:16px;padding-bottom:40px}
+h1{font-size:clamp(2rem,5vw,2.7rem);font-weight:500;line-height:1.1;letter-spacing:-.015em}
+.lede{font-size:1.08rem;color:var(--muted);max-width:54ch}
+.links{
+  display:flex;flex-wrap:wrap;gap:6px 20px;font-family:"IBM Plex Mono",monospace;
+  font-size:.8rem;padding-top:6px;
+}
+.links a{text-decoration:none;border-bottom:1px solid var(--rule-strong)}
+.links a:hover,.links a:focus-visible{border-bottom-color:var(--accent)}
+.links a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- section heads ---------- */
+.shead{
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
+  padding-bottom:12px;border-bottom:1px solid var(--rule-strong);margin-bottom:26px;
+}
+section{padding:44px 0}
+
+/* ---------- featured project ---------- */
+.proj{display:flex;flex-direction:column;gap:16px}
+.proj h2{font-size:1.6rem;font-weight:500;line-height:1.22}
+.proj .find{
+  font-family:Newsreader,Georgia,serif;font-size:1.14rem;line-height:1.45;
+  color:var(--ink);border-left:3px solid var(--accent);padding:2px 0 2px 18px;
+}
+.proj p{color:var(--body);font-size:.97rem}
+
+.metrics{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));
+  border:1px solid var(--rule);background:var(--sunk);
+}
+.metric{padding:15px 16px;border-right:1px solid var(--rule)}
+.metric:last-child{border-right:none}
+.metric b{
+  display:block;font-family:"IBM Plex Mono",monospace;font-size:1.16rem;
+  font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2;
+}
+.metric span{display:block;font-size:.74rem;color:var(--muted);line-height:1.35;margin-top:3px}
+
+.reads{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.read{
+  display:flex;flex-direction:column;gap:5px;text-decoration:none;
+  border:1px solid var(--rule-strong);background:var(--raised);padding:15px 17px;
+  transition:border-color .15s ease,background .15s ease;
+}
+.read:hover,.read:focus-visible{border-color:var(--accent);background:var(--accent-soft)}
+.read:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.read b{color:var(--accent);font-size:.95rem;font-weight:600}
+.read span{color:var(--muted);font-size:.83rem;line-height:1.4}
+
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{
+  font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--muted);
+  border:1px solid var(--rule);background:var(--sunk);padding:2px 7px;
+}
+
+/* ---------- other work ---------- */
+.rows{display:grid;border-top:1px solid var(--rule)}
+.row{
+  display:grid;grid-template-columns:minmax(130px,180px) 1fr;gap:18px;
+  padding:15px 0;border-bottom:1px solid var(--rule);align-items:baseline;
+}
+.row dt{font-family:"IBM Plex Mono",monospace;font-size:.86rem}
+.row dt a{text-decoration:none;border-bottom:1px solid var(--rule-strong)}
+.row dt a:hover,.row dt a:focus-visible{border-bottom-color:var(--accent)}
+.row dd{margin:0;font-size:.9rem;color:var(--muted)}
+
+footer{
+  padding:36px 0 80px;margin-top:20px;border-top:1px solid var(--rule);
+  color:var(--faint);font-size:.82rem;
+}
+@media (max-width:560px){
+  .row{grid-template-columns:1fr;gap:3px}
+  header{padding-top:56px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="hgrid">
+      <h1>aravindvrm</h1>
+      <p class="lede">Machine learning and quantitative research. I build the measurement
+        apparatus alongside the thing being measured, because most of the work is
+        establishing whether a result is real.</p>
+      <div class="links">
+        <a href="https://github.com/aravindvrm">github.com/aravindvrm</a>
+        <a href="mailto:aravindvrm@gmail.com">aravindvrm@gmail.com</a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="shead">Selected work</div>
+
+    <article class="proj">
+      <h2>Systematic Equity Research Framework</h2>
+
+      <p class="find">Twelve signal families, thirty-eight strategies, twenty-one years of data
+        &mdash; and a calibration procedure showing that none of them beat random noise routed
+        through the same pipeline.</p>
+
+      <div class="metrics">
+        <div class="metric"><b>0.036</b><span>IC required to break even</span></div>
+        <div class="metric"><b>0.012</b><span>achievable on free data</span></div>
+        <div class="metric"><b>0 / 38</b><span>clearing a calibrated null</span></div>
+        <div class="metric"><b>2.75</b><span>t-stat produced by noise</span></div>
+      </div>
+
+      <p>A research harness for cross-sectional equity signals: point-in-time ingestion from SEC
+        DERA and EDGAR, a backtest engine tracking true holdings drift, Fama-French and
+        Ferson-Schadt attribution, and a null-floor control that measures what a
+        <em>zero-information</em> strategy scores in the same pipeline. That control invalidated
+        four of my own earlier conclusions, which is documented rather than quietly fixed.</p>
+
+      <div class="reads">
+        <a class="read" href="https://aravindvrm.github.io/systematic-equity-research/">
+          <b>A Measured Ceiling &rarr;</b>
+          <span>The research writeup &mdash; what was tested, what failed, and the arithmetic
+            explaining why.</span>
+        </a>
+        <a class="read" href="https://aravindvrm.github.io/systematic-equity-research/null-floor.html">
+          <b>What Does Nothing Score? &rarr;</b>
+          <span>On calibrating significance against your own pipeline rather than against
+            convention.</span>
+        </a>
+      </div>
+
+      <div class="tags">
+        <span class="tag">python</span><span class="tag">pandas</span>
+        <span class="tag">scikit-learn</span><span class="tag">statsmodels</span>
+        <span class="tag">SEC EDGAR / DERA</span><span class="tag">35 tests</span>
+      </div>
+
+      <div class="links">
+        <a href="https://github.com/aravindvrm/systematic-equity-research">Source on GitHub</a>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <div class="shead">Other public work</div>
+    <dl class="rows">
+      <div class="row">
+        <dt><a href="https://github.com/aravindvrm/bender">bender</a></dt>
+        <dd>AI-powered software factory &mdash; turns messy product ideas into maintainable
+          codebases.</dd>
+      </div>
+      <div class="row">
+        <dt><a href="https://github.com/aravindvrm/dalle2-pipeline">dalle2-pipeline</a></dt>
+        <dd>Node.js pipeline for image processing, DeepLabV3+ segmentation masks, and
+          AI-driven edits via the DALL&middot;E API.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <footer>
+    <p>Built as static HTML, no framework. Source for this page is
+      <a href="https://github.com/aravindvrm/aravindvrm.github.io">on GitHub</a>.</p>
+  </footer>
+
+</div>
+</body>
+</html>
