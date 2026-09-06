@@ -204,13 +204,44 @@ footer{
   </section>
 
   <section>
-    <div class="shead">Elsewhere</div>
-    <p class="elsewhere"><a href="https://github.com/aravindvrm/bender">bender</a> &mdash;
-      a local-first AI engineering workspace running CLI, web and desktop on one backend.
-      Built to work through agent architecture properly: eight role runtimes, skills and MCP
-      as attachable capability, and an eval subsystem that scores model output as a CI gate.
-      26k lines of TypeScript, 56 test files. Exploratory and dormant.</p>
-    <p class="elsewhere" style="margin-top:14px">More at
+    <div class="shead">Also</div>
+
+    <article class="proj">
+      <h2>Bender</h2>
+
+      <p class="find">A local-first AI engineering workspace &mdash; CLI, web dashboard and
+        desktop app on one backend &mdash; built to work through agent architecture properly
+        rather than read about it.</p>
+
+      <div class="metrics">
+        <div class="metric"><b>8</b><span>role runtimes, one shared base</span></div>
+        <div class="metric"><b>3 &rarr; 1</b><span>interfaces on one backend</span></div>
+        <div class="metric"><b>56</b><span>test files</span></div>
+        <div class="metric"><b>CI</b><span>eval suites gate the build</span></div>
+      </div>
+
+      <p>Work is decomposed across eight specialised runtimes &mdash; analyzer, architect,
+        planner, implementer, reviewer and others &mdash; each with its own prompts, tools and
+        skill defaults, rather than one thread accumulating everything. Skills and MCP servers
+        attach as capability per role. The part most agent tooling skips is the eval subsystem:
+        a runner, scorer and aggregator wired to Promptfoo, so a prompt change that scores worse
+        can fail a build. Exploratory and dormant.</p>
+
+      <div class="tags">
+        <span class="tag">typescript</span><span class="tag">react</span>
+        <span class="tag">electron</span><span class="tag">express</span>
+        <span class="tag">sqlite</span><span class="tag">vercel ai sdk</span>
+        <span class="tag">promptfoo</span><span class="tag">MCP</span>
+      </div>
+
+      <div class="links">
+        <a href="https://github.com/aravindvrm/bender">Source on GitHub</a>
+      </div>
+    </article>
+  </section>
+
+  <section style="padding-top:0">
+    <p class="elsewhere">More at
       <a href="https://github.com/aravindvrm">github.com/aravindvrm</a>.</p>
   </section>
 
