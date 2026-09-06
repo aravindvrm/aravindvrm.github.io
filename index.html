@@ -135,6 +135,20 @@ section{padding:44px 0}
   font-size:.88rem;color:var(--muted);border-left:1px solid var(--rule-strong);
   padding-left:16px;
 }
+/* Product shots. Same frame on both; the proportions differ because the
+   products do -- one is a desktop marketplace, one a mobile-first PWA. */
+.shot{margin:0;display:flex;flex-direction:column;gap:9px}
+.shot img{
+  display:block;width:100%;height:auto;
+  border:1px solid var(--rule-strong);border-radius:4px;background:var(--sunk);
+}
+/* explicit width, so the width/height attributes still reserve the box
+   before the image loads; max-height would collapse it to nothing */
+.shot-tall img{width:min(100%,250px);margin:0 auto}
+.shot figcaption{
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--faint);
+  letter-spacing:.02em;
+}
 .status.dev{color:var(--muted);border-color:var(--rule-strong);background:var(--sunk)}
 
 /* ---------- elsewhere ---------- */
@@ -190,6 +204,15 @@ footer{
 
       <p class="attrib">Built as a working prototype. Deployed and reachable, but not yet open.</p>
 
+      <figure class="shot">
+        <img src="assets/swapaday-home.webp" width="2784" height="633"
+             loading="lazy" decoding="async"
+             alt="SwapADay browse page: a search field with type, format, duration and
+                  industry filters above a grid of shadowing experiences, each card showing
+                  a host, a session title and tags for format and length.">
+        <figcaption>Prototype browse view, seeded demo content &mdash; not live listings.</figcaption>
+      </figure>
+
       <div class="metrics">
         <div class="metric"><b>45</b><span>Supabase migrations</span></div>
         <div class="metric"><b>60</b><span>test files</span></div>
@@ -226,6 +249,15 @@ footer{
 
       <p class="attrib">Running at a preview deployment, with the production domain to
         follow. No auth layer yet, so everything is readable.</p>
+
+      <figure class="shot shot-tall">
+        <img src="assets/bronzefm-home.webp" width="722" height="1616"
+             loading="lazy" decoding="async"
+             alt="bronze.fm home screen on a phone viewport: a featured creator, then a
+                  New Content list showing a whitepaper and a music release, each with
+                  like, comment and share actions.">
+        <figcaption>Preview deployment, mobile viewport.</figcaption>
+      </figure>
 
       <p>Multi-tenant from the schema up: a creator owns projects, and each project carries
         typed interfaces onto it &mdash; an album&rsquo;s tracklist, a paper&rsquo;s reader.</p>
