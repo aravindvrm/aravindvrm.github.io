@@ -123,18 +123,10 @@ section{padding:44px 0}
   border:1px solid var(--rule);background:var(--sunk);padding:2px 7px;
 }
 
-/* ---------- products ---------- */
-.prods{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
-.prod{
-  border:1px solid var(--rule);background:var(--raised);padding:18px 20px;
-  display:flex;flex-direction:column;gap:11px;
-}
-.prod-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.prod h3{font-size:1.14rem;font-weight:500}
-.prod h3 a{text-decoration:none;border-bottom:1px solid var(--rule-strong)}
-.prod h3 a:hover,.prod h3 a:focus-visible{border-bottom-color:var(--accent)}
-.prod h3 a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.prod p{font-size:.9rem;color:var(--body);line-height:1.55}
+/* ---------- project head, status, attribution ---------- */
+.proj-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+/* two peer projects in one section are separated by a rule, not by nesting */
+.proj + .proj{margin-top:34px;padding-top:34px;border-top:1px solid var(--rule)}
 .status{
   font-family:"IBM Plex Mono",monospace;font-size:.64rem;font-weight:600;
   letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;border:1px solid;
@@ -143,7 +135,6 @@ section{padding:44px 0}
   font-size:.88rem;color:var(--muted);border-left:1px solid var(--rule-strong);
   padding-left:16px;
 }
-.prod .attrib{font-size:.84rem;padding-left:14px}
 .status.dev{color:var(--muted);border-color:var(--rule-strong);background:var(--sunk)}
 
 /* ---------- elsewhere ---------- */
@@ -188,7 +179,7 @@ footer{
     <div class="shead">Client work</div>
 
     <article class="proj">
-      <div class="prod-head">
+      <div class="proj-head">
         <h2><a href="https://swapaday.com">Swapaday</a></h2>
         <span class="status dev">pre&#8209;launch</span>
       </div>
@@ -226,17 +217,20 @@ footer{
       </div>
     </article>
 
-    <article class="prod" style="margin-top:26px">
-      <div class="prod-head">
-        <h3><a href="https://bronze-fm.vercel.app">bronze.fm</a></h3>
+    <article class="proj">
+      <div class="proj-head">
+        <h2><a href="https://bronze-fm.vercel.app">bronze.fm</a></h2>
         <span class="status dev">in development</span>
       </div>
-      <p>A mobile-first PWA where creators publish music, writing, video and live dates under
-        one handle. Multi-tenant from the schema up: a creator owns projects, and each project
-        carries typed interfaces onto it &mdash; an album&rsquo;s tracklist, a paper&rsquo;s
-        reader.</p>
+
+      <p class="find">A mobile-first PWA where creators publish music, writing, video and
+        live dates under one handle.</p>
+
       <p class="attrib">Running at a preview deployment, with the production domain to
         follow. No auth layer yet, so everything is readable.</p>
+
+      <p>Multi-tenant from the schema up: a creator owns projects, and each project carries
+        typed interfaces onto it &mdash; an album&rsquo;s tracklist, a paper&rsquo;s reader.</p>
       <div class="tags">
         <span class="tag">typescript</span><span class="tag">react</span>
         <span class="tag">supabase</span><span class="tag">PWA</span>
