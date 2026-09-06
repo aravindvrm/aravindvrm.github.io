@@ -99,10 +99,14 @@ section{padding:44px 0}
 
 .metrics{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));
-  border:1px solid var(--rule);background:var(--sunk);
+  border:1px solid var(--rule);background:var(--rule);gap:1px;
 }
-.metric{padding:15px 16px;border-right:1px solid var(--rule)}
-.metric:last-child{border-right:none}
+/* The 1px gap IS the rule, so cells divide correctly in any row/column count.
+   Per-cell border-right only ever worked for a single row. */
+.metric{padding:15px 16px;background:var(--sunk)}
+/* auto-fit lands on three columns between ~384 and ~496px, leaving a stranded
+   fourth tile on most current phones. Below that, two even rows. */
+@media (max-width:500px){.metrics{grid-template-columns:1fr 1fr}}
 .metric b{
   display:block;font-family:"IBM Plex Mono",monospace;font-size:1.16rem;
   font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2;
