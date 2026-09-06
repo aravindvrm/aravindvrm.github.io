@@ -108,9 +108,11 @@ section{padding:44px 0}
   border:1px solid var(--rule);background:var(--sunk);padding:2px 7px;
 }
 
-/* ---------- other work ---------- */
-.rows{display:grid;border-top:1px solid var(--rule)}
-.row{
+/* ---------- elsewhere ---------- */
+.elsewhere{font-size:.95rem;color:var(--body)}
+.elsewhere a{text-decoration:none;border-bottom:1px solid var(--rule-strong)}
+.elsewhere a:hover,.elsewhere a:focus-visible{border-bottom-color:var(--accent)}
+.elsewhere a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
   display:grid;grid-template-columns:minmax(130px,180px) 1fr;gap:18px;
   padding:15px 0;border-bottom:1px solid var(--rule);align-items:baseline;
 }
@@ -124,7 +126,6 @@ footer{
   color:var(--faint);font-size:.82rem;
 }
 @media (max-width:560px){
-  .row{grid-template-columns:1fr;gap:3px}
   header{padding-top:56px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -195,19 +196,10 @@ footer{
   </section>
 
   <section>
-    <div class="shead">Also on GitHub</div>
-    <dl class="rows">
-      <div class="row">
-        <dt><a href="https://github.com/aravindvrm/bender">bender</a></dt>
-        <dd>AI-powered software factory &mdash; turns messy product ideas into maintainable
-          codebases.</dd>
-      </div>
-      <div class="row">
-        <dt><a href="https://github.com/aravindvrm/dalle2-pipeline">dalle2-pipeline</a></dt>
-        <dd>Node.js pipeline for image processing, DeepLabV3+ segmentation masks, and
-          AI-driven edits via the DALL&middot;E API.</dd>
-      </div>
-    </dl>
+    <div class="shead">Elsewhere</div>
+    <p class="elsewhere"><a href="https://github.com/aravindvrm/bender">bender</a> &mdash;
+      an AI-powered software factory that turns messy product ideas into maintainable
+      codebases. More at <a href="https://github.com/aravindvrm">github.com/aravindvrm</a>.</p>
   </section>
 
   <footer>
