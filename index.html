@@ -140,6 +140,11 @@ section{padding:44px 0}
   letter-spacing:.09em;text-transform:uppercase;padding:2px 7px;border:1px solid;
 }
 .status.live{color:var(--pass);border-color:var(--pass);background:var(--pass-soft)}
+.status.contract{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.attrib{
+  font-size:.88rem;color:var(--muted);border-left:1px solid var(--rule-strong);
+  padding-left:16px;
+}
 .status.dev{color:var(--muted);border-color:var(--rule-strong);background:var(--sunk)}
 
 /* ---------- elsewhere ---------- */
@@ -186,12 +191,16 @@ footer{
     <article class="proj">
       <div class="prod-head">
         <h2><a href="https://swapaday.com">Swapaday</a></h2>
-        <span class="status live">live</span>
+        <span class="status contract">client work</span>
       </div>
 
       <p class="find">Step into someone else&rsquo;s workday. A marketplace for career
         shadowing &mdash; book time with a host and find out what a job actually feels like
         before committing to it.</p>
+
+      <p class="attrib">Built under contract as a working prototype. Deployed and reachable;
+        pre-launch while the founder works through market validation and operational setup, so
+        the marketplace has no live listings yet.</p>
 
       <div class="metrics">
         <div class="metric"><b>45</b><span>Supabase migrations</span></div>
