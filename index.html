@@ -123,6 +123,12 @@ section{padding:44px 0}
 .read:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .read b{color:var(--accent);font-size:.95rem;font-weight:600}
 .read span{color:var(--muted);font-size:.83rem;line-height:1.4}
+/* names the document type, the same word its own masthead carries */
+.read .kind{
+  font-family:"IBM Plex Mono",monospace;font-size:.6rem;font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+  align-self:flex-start;
+}
 
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{
@@ -275,11 +281,13 @@ footer{
 
       <div class="reads">
         <a class="read" href="https://aravindvrm.github.io/systematic-equity-research/null-floor.html">
+          <span class="kind">Essay</span>
           <b>What Does Nothing Score? &rarr;</b>
           <span>On calibrating significance against your own pipeline rather than against
             convention.</span>
         </a>
         <a class="read" href="https://aravindvrm.github.io/systematic-equity-research/method.html">
+          <span class="kind">Essay</span>
           <b>Plausible and Wrong &rarr;</b>
           <span>The working method, and its record: every defect this project logged, and
             what caught it. Reading the output carefully caught none of them.</span>
